@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>admin</title>
+	<link href="style.css" rel="stylesheet">
+    <title> CRUD OPERATIONS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<center>
+            <div class="" style="width:700px; margin-top:+30px; ">
+                <div class="panel panel-default">
+                    <div class="panel-body" style="background-color:#bccce5 ; margin-left: +10 ">
+             
+                           <!--  <div class="col-md-5"> -->
+                           <!-- <h3 style="text-align: center; ">Register</h3><br> -->
+<!-- <div class="col-md-1"></div> -->
+                        <!-- <div class="col-md-6"> -->
+                            <div class="userListWrap">
+                                <h3 style="text-align: center; margin-top:-10px;  ">User List</h3>
+                                <div style="overflow: scroll;height: 500px;">
+
+                                    <table class="table" id="tableId">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center" style=" background-color:#5b8480">ID</th>
+                                                <th class="text-center" style=" background-color:#5b8480">Name</th>
+                                                <th class="text-center" style=" background-color:#5b8480">Email</th>
+                                                <th class="text-center" style=" background-color:#5b8480">Mobile</th>
+                                                <th class="text-center" style=" background-color:#5b8480">Block</th>
+                                                <th class="text-center" style=" background-color:#5b8480">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="userList" class="userList">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+                            <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url:"user/allData",
+                type:"GET",
+                success:function(data){
+                    var userList = data.response.userList;
+                    var j = 1;
+                    for(var i =0; i < userList.length; i++){
+                        if (userList[i].is_blocked == 0) {
+                            var button = "<button id='blockUnblock' data-id = '"+userList[i].id+"' class ='btn btn-danger'>Block</button>";
+                            console .log("block calling")
+                        } else {
+                            var button = "<button id='blockUnblock' data-id = '"+userList[i].id+"' class ='btn btn-success'>Unblock</button>";
+                        }
+                        if (userList[i].deleted_at == 'null') {
+                            var delButton = "<button id='delApprove' data-id = '"+userList[i].id+"'class ='btn btn-danger'>Delete</button>";
+                        } else {
+                            var delButton = "<button id='delApprove' data-id = '"+userList[i].id+"' class ='btn btn-success'>Approve</button>";
+                        }
+                        $("#userList").append('<tr>\
+                                        <td>'+ userList[i].id +'</td>\
+                                        <td>'+ userList[i].name +'</td\
+                                        <td></td>\
+                                        <td>'+ userList[i].email +'</td>\
+                                        <td>'+ userList[i].mobile +'</td>\
+                                        <td>'+ button +'</td>\
+                                        <td>'+ delButton +'</td>\
+                                    </tr>'
+                                );
+                    }
+                }
+            });
+            $(document).on('click','#blockUnblock',function(){
+                var id = $(this).attr('data-id');
+                $.ajax({
+                        url:"user/blockUnblock",
+                        type:"POST",
+                        data:{
+                            "id":id
+                        },
+                        success:function(data){
+                            window.location.reload();
+                        }
+                });
+            });
+            $(document).on('click','#delApprove',function(){
+                var id = $(this).attr('data-id');
+                $.ajax({
+                        url:"user/delbtn",
+                        type:"POST",
+                        data:{
+                            "id":id
+                        },
+                        success:function(data){
+                            window.location.reload();
+                        }
+                });
+            });
+
+
+        });
+    </script>
+</body>
+</html>

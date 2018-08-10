@@ -1,0 +1,21 @@
+{
+  "name": "task1",
+  "version": "1.0.0",
+  "description": "Todo Task",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shiwangee",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "glob": "^7.1.2",
+    "joi": "^13.5.2",
+    "lodash": "^4.17.10",
+    "md5": "^2.2.1",
+    "mysql": "^2.16.0",
+    "path": "^0.12.7"
+  }
+}

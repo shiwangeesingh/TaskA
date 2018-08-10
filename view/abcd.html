@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="style.css" rel="stylesheet">
+    <title> CRUD OPERATIONS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="col-md-4">
+        <div class="form-group">
+            <div class="" style="width:1220px;  ">
+                <div class="panel panel-default">
+                    <div class="panel-body" style="background-color:#bccce5  ">
+                        <form>
+                            <div class="col-md-5">
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Name</label>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="text" id="name" name="name" class="form-control " placeholder="User Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label>Mobile </label>
+                                    </div>
+                                    <div class="col-md-10">
+
+                                        <input id="mobile" type="number" class="form-control" placeholder="Enter Valid Phone" name="Mobile"><br>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label>ID</label>
+                                    </div>
+                                    <div class="col-md-10">
+
+                                        <input id="id" type="text" class="form-control" placeholder="Enter Valid id" name="id"> <br>
+                                    </div>
+                                </div>
+
+                                <input type="button" id="add" class="btn" value="add" name="add" style="margin-left: 80px">
+                                <input type="button" id="delete" class="btn" value="delete" name="delete">
+                                <input type="button" id="update" class="btn" value="update" name="update">
+                                <input type="button" id="viewUser" class="btn" value="viewUser" name="viewUser">
+                            </div>
+                        </form>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-6">
+                            <div class="userListWrap">
+                                <h3 style="text-align: center; margin-top:-10px;  ">User List</h3>
+                                <div style="overflow: scroll;height: 500px;">
+
+                                    <table class="table" id="tableId">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center" style=" background-color:#5b8480">ID</th>
+                                                <th class="text-center" style=" background-color:#5b8480">Name</th>
+                                                <th class="text-center" style=" background-color:#5b8480">Mobile</th>
+                                                <th class="text-center" style=" background-color:#5b8480">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="userList">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+                            <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+                            <script>
+                                $(document).ready(function() {
+                                    $('#add').click(function() {
+                                        var name = $('#name').val();
+                                        var mobile = $('#mobile').val();
+                                        if (name.length == 0) {
+                                            alert("Name Field is required");
+                                            return false;
+                                        }
+                                        else if ((mobile.length != 10) && (typeof(mobile) != "number")) {
+                                            alert("Mobile Number is incorrect");
+                                            return false;
+                                        }
+                                        
+                                        var request = $.ajax({
+                                            "url": "http://localhost:3000/user/add",
+                                            "type": "POST",
+                                            "data": {
+                                                "name": name,
+                                                "mobile": mobile
+                                            }
+                                        });
+                                        $('#viewUser').trigger('click');
+                                    });
+
+                                });
+
+                                $(document).ready(function() {
+                                    $('#update').click(function() {
+                                        var name = $('#name').val();
+                                        var mobile = $('#mobile').val();
+                                        var id = $('#id').val();
+                                        if ((id.length == 0)) {
+                                            alert("ID is required");
+                                        }
+
+                                       else if (name.length == 0) {
+                                            alert("Name is required");
+                                            return false;
+                                        }
+
+                                        else if ((mobile.length != 10) && (typeof(mobile) != "Number")) {
+                                            alert("Mobile Number is incorrect");
+                                            return false;
+                                        }
+                                        var request = $.ajax({
+                                            "url": "http://localhost:3000/user/update",
+                                            "type": "POST",
+                                            "data": {
+                                                "name": name,
+                                                "mobile": mobile,
+                                                "id": id
+                                            }
+                                        });
+                                        
+                                        $('#viewUser').trigger('click');
+                                    });
+
+                                });
+
+                                    $(document).ready(function() {
+                                    $('#delete').click(function() {
+                                        var name = $('#name').val();
+                                        var mobile = $('#mobile').val();
+                                        var id = $('#id').val();
+                                        if ((id.length == 0)) {
+                                            alert("ID is required");
+                                        }
+                                        var request = $.ajax({
+                                            "url": "http://localhost:3000/user/delete",
+                                            "type": "POST",
+                                            "data": {
+                                                "id": id,
+                                                "name": name,
+                                                "mobile": mobile
+                                            }
+                                        });
+                                        $('#viewUser').trigger('click');
+                                    });
+                                    
+                                });
+
+                                   $('#viewUser').click(function() {
+                                    var request = $.ajax({
+                                        "url": "http://localhost:3000/user/viewUser",
+                                        "type": "get"
+                                    });
+
+                                    request.success(function(data) {
+                                        $('.userList').empty();
+                                        let data1 = data.response
+                                            console.log(data1) ;
+                                        for (var i = 0; i < data1.length; i++) {
+                                            $('.userList').append('<tr>\
+                    <td class="text-center">' + data1[i]["id"] + '</td>\
+                    <td class="text-center">' + data1[i]["name"] + '</td>\
+                    <td class="text-center">' + data1[i]["mobile"] + '</td>\
+                    <td class="text-center" ><button class="btn" id="delete' + i + '" onclick="deleteUser(' + data1[i]["id"] + ')">Delete</button></td>\
+                </tr>')
+                                     }
+                                    })
+                                });
+ 
+                                function deleteUser(id) {
+                                    alert("delete");
+                                    var request = $.ajax({
+                                        "url": "http://localhost:3000/user/delete",
+                                        "type": "POST",
+                                        "data": {
+                                            "id": id
+                                        }
+                                    });
+                                    $('#viewUser').trigger('click');
+                                }
+                               
+                            </script>
+</body>
+
+</html>
