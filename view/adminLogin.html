@@ -9,17 +9,14 @@
     <script src="https://maxcdn.bootstrapcdkn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-	<div class="form-group">
+    <div class="form-group">
 		<center>
             <div class="" style="width:450px;  margin-top:+100px; ">
                 <div class="panel panel-default">
                     <div class="panel-body" style="background-color:#bccce5 ; ">
                     	<h3 style="text-align: center; ">Admin Login</h3><br>
                         <form>
-                        	 
-                        		
-                        			<div class="form-group">
+                        	 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-2">
                                             <label>Admin Name</label>
@@ -29,8 +26,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-2">
@@ -41,23 +36,17 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                
-                                 <input type="button" id="login" class="btn" value="Login" name="Login">
-
-
-                        		</center>
+                                <input type="button" id="login" class="btn" value="Login" name="Login">
+                            </center>
                         	</form>
                         	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
                             <script type="text/javascript" src="assets/js/jquery.min.js"></script>
                             <script>
                                 $(document).ready(function() {
-                                	alert("login working")
-                                    $('#login').click(function() {
+                                	$('#login').click(function() {
                                         var name = $('#name').val();
                                         var password = $('#pass').val();
-                                       $.ajax({
+                                        $.ajax({
                                             "url": "http://localhost:3000/user/loginAdmin",
                                             "type": "POST",
                                             "data": {

@@ -9,12 +9,7 @@ var connection = mysql.createConnection({
 });
 connection.connect(function(err,res){
 	if(err){
-		// var error={
-		// 	status: 0,
-		// 	message: "Error in execution"
-		// }
 		console.log("database not working");
-		//responses.sendError(res)
 	}
 	else{
 		console.log("database is working");

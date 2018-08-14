@@ -38,7 +38,6 @@ define(exports.responseMessages, 'MOBILE_NUMBER_REQUIRE',                 'Mobil
 define(exports.responseMessages, 'DATA_UPDATED_SUCCESSFULL',              'Data updated successfully.');
 define(exports.responseMessages, 'NAME_REQUIRE',                          'Name is required.');
 define(exports.responseMessages, 'ID_REQUIRE',                            'Id is required.');
-//define(exports.responseMessages, 'USER_NOT_VARIFIED',                     'User not verified.');
 
 //FOR FLAGS
 define(exports.responseFlags, 'ALREADY_EXIST',                       422);
@@ -50,7 +49,6 @@ define(exports.responseFlags, 'INVALID_EMAIL_ID',                    403);
 define(exports.responseFlags, 'WRONG_PASSWORD',                      403);
 define(exports.responseFlags, 'ACTION_COMPLETE',                     200);
 define(exports.responseFlags, 'LOGIN_SUCCESSFULLY',                  200);
-//define(exports.responseFlags, 'USER_VARIFIED',                  200);
 define(exports.responseFlags, 'SHOW_ERROR_MESSAGE',                  400);
 define(exports.responseFlags, 'IMAGE_FILE_MISSING',                  422);
 define(exports.responseFlags, 'ERROR_IN_EXECUTION',                  404);
@@ -64,4 +62,3 @@ define(exports.responseFlags, 'NO_DATA_FOUND',                       203);
 define(exports.responseFlags, 'USER_DELETED_SUCCESSFULLY',           200);
 define(exports.responseFlags, 'PASSWORD_CHANGED_SUCCESSFULLY',       200);
 define(exports.responseFlags, 'OTP_NOT_MATCHED',                     400);
-//define(exports.responseFlags, 'USER_NOT_VARIFIED',                     400);

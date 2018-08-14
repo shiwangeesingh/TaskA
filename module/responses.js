@@ -62,18 +62,4 @@ exports.invalidData = function(res) {
 	};
 	res.status(constants.responseFlags.INVALID_DATA).json(response);
 }
-// exports.varified = function(res) {
-// 	var response = {
-// 		response: {},
-// 		message: constants.responseMessages.USER_VARIFIED
-// 	};
-// 	res.status(constants.responseFlags.USER_VARIFIED).json(response);
-// }
-// exports.notvarified = function(res) {
-// 	var response = {
-// 		response: {},
-// 		message: constants.responseMessages.USER_NOT_VARIFIED
-// 	};
-// 	res.status(constants.responseFlags.USER_NOT_VARIFIED).json(response);
-// }
 

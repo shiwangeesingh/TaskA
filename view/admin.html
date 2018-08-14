@@ -14,11 +14,6 @@
             <div class="" style="width:700px; margin-top:+30px; ">
                 <div class="panel panel-default">
                     <div class="panel-body" style="background-color:#bccce5 ; margin-left: +10 ">
-             
-                           <!--  <div class="col-md-5"> -->
-                           <!-- <h3 style="text-align: center; ">Register</h3><br> -->
-<!-- <div class="col-md-1"></div> -->
-                        <!-- <div class="col-md-6"> -->
                             <div class="userListWrap">
                                 <h3 style="text-align: center; margin-top:-10px;  ">User List</h3>
                                 <div style="overflow: scroll;height: 500px;">
@@ -54,7 +49,6 @@
                     for(var i =0; i < userList.length; i++){
                         if (userList[i].is_blocked == 0) {
                             var button = "<button id='blockUnblock' data-id = '"+userList[i].id+"' class ='btn btn-danger'>Block</button>";
-                            console .log("block calling")
                         } else {
                             var button = "<button id='blockUnblock' data-id = '"+userList[i].id+"' class ='btn btn-success'>Unblock</button>";
                         }
