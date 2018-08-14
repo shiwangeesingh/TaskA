@@ -200,101 +200,12 @@
                                     alert("Recorded success");
                                     window.location.replace('userLogin.html')
                                 })
-                                        //alert   ("already Register ")
-                                        //$('#viewUser').trigger('click');
+                                    request.error(function(data){
+                                                alert("Fail");
+                                            })
                                     });
 
                                 });
-
-
-                //                 $(document).ready(function() {
-                //                     $('#update').click(function() {
-                //                         var name = $('#name').val();
-                //                         var mobile = $('#mobile').val();
-                //                         var id = $('#id').val();
-                //                         if ((id.length == 0)) {
-                //                             alert("ID is required");
-                //                         }
-
-                //                        else if (name.length == 0) {
-                //                             alert("Name is required");
-                //                             return false;
-                //                         }
-
-                //                         else if ((mobile.length != 10) && (typeof(mobile) != "Number")) {
-                //                             alert("Mobile Number is incorrect");
-                //                             return false;
-                //                         }
-                //                         var request = $.ajax({
-                //                             "url": "http://localhost:3000/user/update",
-                //                             "type": "POST",
-                //                             "data": {
-                //                                 "name": name,
-                //                                 "mobile": mobile,
-                //                                 "id": id
-                //                             }
-                //                         });
-                                        
-                //                         $('#viewUser').trigger('click');
-                //                     });
-
-                //                 });
-
-                //                     $(document).ready(function() {
-                //                     $('#delete').click(function() {
-                //                         var name = $('#name').val();
-                //                         var mobile = $('#mobile').val();
-                //                         var id = $('#id').val();
-                //                         if ((id.length == 0)) {
-                //                             alert("ID is required");
-                //                         }
-                //                         var request = $.ajax({
-                //                             "url": "http://localhost:3000/user/delete",
-                //                             "type": "POST",
-                //                             "data": {
-                //                                 "id": id,
-                //                                 "name": name,
-                //                                 "mobile": mobile
-                //                             }
-                //                         });
-                //                         $('#viewUser').trigger('click');
-                //                     });
-                                    
-                //                 });
-
-                //                    $('#viewUser').click(function() {
-                //                     var request = $.ajax({
-                //                         "url": "http://localhost:3000/user/viewUser",
-                //                         "type": "get"
-                //                     });
-
-                //                     request.success(function(data) {
-                //                         $('.userList').empty();
-                //                         let data1 = data.response
-                //                             console.log(data1) ;
-                //                         for (var i = 0; i < data1.length; i++) {
-                //                             $('.userList').append('<tr>\
-                //     <td class="text-center">' + data1[i]["id"] + '</td>\
-                //     <td class="text-center">' + data1[i]["name"] + '</td>\
-                //     <td class="text-center">' + data1[i]["mobile"] + '</td>\
-                //     <td class="text-center" ><button class="btn" id="delete' + i + '" onclick="deleteUser(' + data1[i]["id"] + ')">Delete</button></td>\
-                // </tr>')
-                //                      }
-                //                     })
-                //                 });
- 
-                //                 function deleteUser(id) {
-                //                     alert("delete");
-                //                     var request = $.ajax({
-                //                         "url": "http://localhost:3000/user/delete",
-                //                         "type": "POST",
-                //                         "data": {
-                //                             "id": id
-                //                         }
-                //                     });
-                //                     $('#viewUser').trigger('click');
-                //                 }
-                               
                             </script>
 </body>
 

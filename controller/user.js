@@ -12,21 +12,33 @@ exports.submit = function(req, res) {
     }
     else
     {
-      userModel.checkAvailable({name,email,password,mobile}, function(err, result) {
+      userModel.checkData1({email, mobile}, function(err, result) {
         if (err) {
+            console.log(err)
             responses.sendError(res)
         }
          else {
+            console.log(result)
             if (result.length > 0) {
-            responses.numberAlreadyExist(res)  
+             {
+                    responses.emailAlreadyExist(res)  
+                    
+                } 
+           
             } else {
             var data = {mobile,name,password,email};
             userModel.submitQuery(data, function(err,user) {
                 if (err) {
             responses.sendError(res)
                     
-                } else {
-                    responses.success(res, user)
+                }
+                else{
+                  
+                   let id = user[0].id;
+                   let html = '<p>Click <a href="http://localhost:3000/user/varified/'+id+'" >here</a> to varify youe details</p>'
+                    commFunc.sendmail(email,html);
+                    responses.success(res, user[0])
+                    
                 }
             })
         }
@@ -90,5 +102,26 @@ exports.blockUnblock = function(req, res) {
     connection.query("UPDATE userdetails SET is_blocked = CASE when is_blocked = 1 then 0 else 1 END where id = ?",[id], function(err, result) {
         res.status(200).json({"message":"User has been blocked"});
     })
+
+
+}
+exports.varified=function(req,res){
+var{id}= req.params;
+
+userModel.checkId({id}, function(err, result) {
+    if(err) {
+    } else if(result.length == 0){
+        res.status(403).json({"message":"Id not available"});
+    } else {
+        if(result[0].is_varified === 1) {
+            res.status(200).json({"message":"User has been already varified"});
+        } else {
+            connection.query(`UPDATE userdetails SET is_varified = CASE when is_varified = 0 then 1 else 0 END where id = ?`,[id], function(err, result) {
+        res.status(200).json({"message":"User has been varified"});
+    })
+        }
+    }
+})
+
 
 }

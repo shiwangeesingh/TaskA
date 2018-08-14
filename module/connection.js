@@ -13,7 +13,8 @@ connection.connect(function(err,res){
 		// 	status: 0,
 		// 	message: "Error in execution"
 		// }
-		responses.sendError(res)
+		console.log("database not working");
+		//responses.sendError(res)
 	}
 	else{
 		console.log("database is working");

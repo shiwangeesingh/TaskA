@@ -9,13 +9,17 @@
   "author": "shiwangee",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "glob": "^7.1.2",
     "joi": "^13.5.2",
+    "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "md5": "^2.2.1",
     "mysql": "^2.16.0",
+    "nodemailer": "^4.6.7",
+    "nodemailer-smtp-transport": "^2.7.4",
     "path": "^0.12.7"
   }
 }

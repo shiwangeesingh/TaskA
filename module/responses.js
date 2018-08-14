@@ -32,6 +32,13 @@ exports.numberAlreadyExist = function(res) {
 	};
 	res.status(constants.responseFlags.ALREADY_EXIST).json(response);
 }
+exports.emailAlreadyExist = function(res) {
+	var response = {
+		response: {},
+		message: constants.responseMessages.EMAIL_ALREADY_EXISTS
+	};
+	res.status(constants.responseFlags.ALREADY_EXIST).json(response);
+}
 exports.nodata = function(res) {
 	var response ={
 		response: {},
@@ -55,3 +62,18 @@ exports.invalidData = function(res) {
 	};
 	res.status(constants.responseFlags.INVALID_DATA).json(response);
 }
+// exports.varified = function(res) {
+// 	var response = {
+// 		response: {},
+// 		message: constants.responseMessages.USER_VARIFIED
+// 	};
+// 	res.status(constants.responseFlags.USER_VARIFIED).json(response);
+// }
+// exports.notvarified = function(res) {
+// 	var response = {
+// 		response: {},
+// 		message: constants.responseMessages.USER_NOT_VARIFIED
+// 	};
+// 	res.status(constants.responseFlags.USER_NOT_VARIFIED).json(response);
+// }
+
